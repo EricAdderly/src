@@ -75,6 +75,5 @@ func (s *Slice) addToSlice(value int) { // запись переданных з�
 func main() {
 	var slice1 Slice
 	slice1.AddElement(1)
-	slice1.AddElement(2)
 	fmt.Println(slice1)
 }
