@@ -4,16 +4,16 @@ import (
 	"fmt"
 )
 
-const baseCapacity int = 8
-const capacity16 int = 16
+const baseCapacity int = 8 // константа для массива из 8
+const capacity16 int = 16  // константа для массива из 16
 
-type Slice struct {
-	Array    interface{} // как то нужно сделать поле, которое будет создавать массив (скорее всего через функцию)
+type Slice struct { //объявляем структуру нашего "слайса"
+	Array    interface{}
 	Capacity int
 	Lenght   int
 }
 
-func (s *Slice) AddElement(value int) {
+func (s *Slice) AddElement(value int) { //Функция добавления значений в "слайс"
 	if s.Array == nil {
 		s.init()
 	}
@@ -22,13 +22,13 @@ func (s *Slice) AddElement(value int) {
 
 }
 
-func (s *Slice) init() {
+func (s *Slice) init() { // функция присвоение значений полям из структуры
 	s.Capacity = baseCapacity
-	s.Array = [baseCapacity]*int{} // теперь len() функция должна работать правильно. Вернуть правильное кол-во элементов. Проверь
+	s.Array = [baseCapacity]*int{}
 	s.initLenght()
 }
 
-func (s *Slice) initLenght() { //[5, 6, nil, nil, nil, nil]
+func (s *Slice) initLenght() { // функция, для подсчёта длины массива
 	count := 0
 	switch s.Capacity {
 	case baseCapacity:
@@ -48,29 +48,25 @@ func (s *Slice) initLenght() { //[5, 6, nil, nil, nil, nil]
 	}
 	s.Lenght = count
 }
-func (s *Slice) addToSlice(value int) {
+func (s *Slice) addToSlice(value int) { // запись переданных значений в массив
 	switch s.Capacity {
 	case baseCapacity:
-		arr8 := s.Array.([baseCapacity]*int) // приведение тип
+		arr8 := s.Array.([baseCapacity]*int) // приведение к массиву
 
-		if s.Lenght >= baseCapacity {
-			newArr16 := [capacity16]*int{} // переписать этот цикл через for range из inirLeght
-			for i := 0; i < baseCapacity; i++ {
+		if s.Lenght >= baseCapacity { // проверка что длина больше капасити
+			newArr16 := [capacity16]*int{}
+			for i := 0; i < baseCapacity; i++ { // присвоение значений из более раннего массива в новый
 				newArr16[i] = arr8[i]
 			}
 
-			s.initLenght()
+			s.initLenght() // подсчёт длины
 			fmt.Println(s.Lenght)
-			newArr16[s.Lenght+1] = &value
+			newArr16[s.Lenght+1] = &value //запись в массив
+			s.Array = newArr16
 		}
 
-		fmt.Println("arr8: ", arr8)
-		if s.Lenght == 0 {
-			arr8[s.Lenght] = &value
-		}
-
-		arr8[s.Lenght+1] = &value
-		s.initLenght()
+		s.initLenght()            // подсчёт длины
+		arr8[s.Lenght+1] = &value // запись в массив
 		s.Array = arr8
 	}
 
