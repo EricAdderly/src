@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 //import "fmt"
 
 // import (
@@ -316,13 +314,42 @@ import "fmt"
 
 // }
 
-func main() {
-	x := [4]int{1, 2, 3, 4}
-	y := [8]int{5, 6, 7, 8, 9, 10}
-	for i := 0; i < 4; i++ {
-		y[i] = x[i]
-	}
-	fmt.Println(y)
-	i := len(y)
-	fmt.Println(i)
-}
+// func main() {
+// 	x := [4]int{1, 2, 3, 4}
+// 	y := [8]int{5, 6, 7, 8, 9, 10}
+// 	for i := 0; i < 4; i++ {
+// 		y[i] = x[i]
+// 	}
+// 	fmt.Println(y)
+// 	i := len(y)
+// 	fmt.Println(i)
+// }
+
+// Бинарный поиск
+
+// func main() {
+// 	nums := []int{-1, 0, 3, 5, 9, 12}
+// 	target := 12
+// 	fmt.Println(search(nums, target))
+// }
+
+// func search(nums []int, target int) int {
+// 	var array []int
+// 	array = nums
+// 	localTarget := target
+// 	low := 0
+// 	high := len(array) - 1
+
+// 	for low <= high {
+// 		median := (low + high) / 2
+
+// 		if array[median] < localTarget {
+// 			low = median + 1
+// 		} else if array[median] > localTarget {
+// 			high = median - 1
+// 		} else {
+// 			return median
+// 		}
+// 	}
+// 	return -1
+// }
