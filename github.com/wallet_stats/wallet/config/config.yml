@@ -1,0 +1,9 @@
+
+
+db: 
+    username: "postgres"
+		password: "cdxjWRHO"
+		host:     "localhost"
+		port:     "5432"
+		dbname: "Wallet"
+		sslmode:  "disable"
