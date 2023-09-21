@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-		
+	log "github.com/sirupsen/logrus"
 )
 
 func GetAllCities() MainJsonCity {

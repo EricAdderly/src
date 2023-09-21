@@ -1,0 +1,15 @@
+app:
+  name: 'e-project'
+  version: '1.0.0'
+
+http:
+  port: '8080'
+
+logger:
+  log_level: 'debug'
+  rollbar_env: 'e-project'
+
+postgres:
+  pool_max: 2
+  url: host=localhost port=5432 user=postgres dbname=Wallet password=cdxjWRHO sslmode=disable
+

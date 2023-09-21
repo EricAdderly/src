@@ -11,12 +11,12 @@ import (
 )
 
 type StorageConfig struct {
-	Username string
-	Password string
-	Host     string
-	Port     string
-	Database string
-	SSLMode  string
+	Username string `yaml:"username"`
+	Password string `yaml:"password"`
+	Host     string `yaml:"host"`
+	Port     string `yaml:"port"`
+	DBName   string `yaml:"dbname"`
+	SSLMode  string `yaml:"sslmode"`
 }
 
 var cfg = StorageConfig{
@@ -24,7 +24,7 @@ var cfg = StorageConfig{
 	Port:     "5432",
 	Username: "postgres",
 	Password: "cdxjWRHO",
-	Database: "Wallet",
+	DBName:   "Wallet",
 	SSLMode:  "disable",
 	// Host:     viper.GetString("db.host"),
 	// Port:     viper.GetString("db.port"),
@@ -48,6 +48,7 @@ func ConnectionToDB() error {
 	var err error
 	db, err = sqlx.Open("postgres", fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s sslmode=%s",
 		cfg.Host, cfg.Port, cfg.Username, cfg.Database, cfg.Password, cfg.SSLMode))
+
 	if err != nil {
 		fmt.Println(err)
 		return err
