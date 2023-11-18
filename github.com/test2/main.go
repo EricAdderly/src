@@ -1,23 +1,25 @@
 package main
 
-import (
-	"fmt"
-	"log"
-	"net/http"
-	"time"
-
-	"github.com/test2/handlers"
-)
+import "fmt"
 
 func main() {
-	http.HandleFunc("/login", handlers.Login)
-	http.HandleFunc("/home", handlers.Home)
-	http.HandleFunc("/refresh", handlers.Refresh)
-	http.HandleFunc("/join", handlers.RegistrationHandler)
-	expirationTime := time.Now().Add(time.Minute * 60)
-	time := time.Now()
-	fmt.Println(time, expirationTime)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	myFirstChannel := make(chan string)
+
+	myFirstChannel <- "hello"
+
+	myVariable := myFirstChannel
+	myVariable1 := <-myFirstChannel
+
+	fmt.Println(myVariable)
+	fmt.Println(myVariable1)
+	// http.HandleFunc("/login", handlers.Login)
+	// http.HandleFunc("/home", handlers.Home)
+	// http.HandleFunc("/refresh", handlers.Refresh)
+	// http.HandleFunc("/join", handlers.RegistrationHandler)
+	// expirationTime := time.Now().Add(time.Minute * 6Println(a)
+	// time := time.Now()
+	// fmt.Println(time, expirationTime)
+	// log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
 // что нужно добавить:
